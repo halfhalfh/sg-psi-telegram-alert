@@ -8,7 +8,7 @@ CHAT_ID = os.environ["CHAT_ID"]
 PSI_THRESHOLD = int(os.environ.get("PSI_THRESHOLD", "1"))
 
 # --- NEA PSI API (data.gov.sg v2 real-time) ---
-PSI_URL = "https://api-open.data.gov.sg/v2/real-time/api/psi"
+PSI_URL = "https://api.data.gov.sg/v1/environment/psi"
 
 def get_psi_data():
     resp = requests.get(PSI_URL, timeout=10)
