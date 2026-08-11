@@ -5,7 +5,7 @@ import urllib.parse
 # --- Config from environment variables ---
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_ID = os.environ["CHAT_ID"]
-PSI_THRESHOLD = int(os.environ.get("PSI_THRESHOLD", "100"))
+PSI_THRESHOLD = int(os.environ.get("PSI_THRESHOLD", "1"))
 
 # --- NEA PSI API (data.gov.sg v2 real-time) ---
 PSI_URL = "https://api-open.data.gov.sg/v2/real-time/api/psi"
