@@ -22,12 +22,18 @@ def check_psi_and_build_message(data):
     latest = items[-1]
     timestamp = latest.get("timestamp", "")
 
+    readings = latest.get("readings", {})
+    overall_psi = (
+        readings.get("psi_twenty_four_hourly", {}).get("national")
+        or readings.get("psi_twenty_four_hourly", {}).get("overall")  # fallback
+    )
+
     regions = ["north", "south", "east", "west", "central"]
     alerts = []
 
     for region in regions:
         psi_val = (
-            latest.get("readings", {})
+            readings
             .get("psi_twenty_four_hourly", {})
             .get(region)
         )
@@ -39,7 +45,10 @@ def check_psi_and_build_message(data):
     if not alerts:
         return None
 
-    header = f"\U0001F6A8 Haze Alert (24-hr PSI >= {PSI_THRESHOLD})\n"
+    header = f"🚨 Haze Alert (24-hr PSI ≥ {PSI_THRESHOLD})\n"
+    if overall_psi is not None:
+        header += f"Overall (24-hr PSI): {overall_psi}\n"
+
     body = "\n".join(alerts)
     footer = f"\nTime (SGT): {timestamp}"
     return header + body + footer
