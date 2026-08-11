@@ -3,8 +3,8 @@ import requests
 import urllib.parse
 
 # --- Config from environment variables ---
-BOT_TOKEN = os.environ["8785834969:AAFl8p3k4AvOwU0IvEqzUYD1a5pSObAp2qQ"]
-CHAT_ID = os.environ["741974904"]
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHAT_ID = os.environ["CHAT_ID"]
 PSI_THRESHOLD = int(os.environ.get("PSI_THRESHOLD", "100"))
 
 # --- NEA PSI API (data.gov.sg v2 real-time) ---
